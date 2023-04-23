@@ -6,7 +6,6 @@ from algosdk.v2client.algod import AlgodClient
 from pyteal import *
 from pyteal.ast import *
 
-
 def event(
     init: Expr = Reject(),
     delete: Expr = Reject(),
@@ -19,9 +18,9 @@ def event(
         [Txn.application_id() == Int(0), init],
         [Txn.on_completion() == OnComplete.DeleteApplication, delete],
         [Txn.on_completion() == OnComplete.UpdateApplication, update],
-        [Txn.on_completion() == OnComplete.OptIn, opt_in],
+        [Txn.on_completion() == OnComplete.OptIn, opt_in], 
         [Txn.on_completion() == OnComplete.CloseOut, close_out],
-        [Txn.on_completion() == OnComplete.NoOp, no_op],
+        [Txn.on_completion() == OnComplete.NoOp, no_op], 
     )
 
 
